@@ -1,7 +1,8 @@
 from jsonpath_ng import parse
 from functools import partial
 from pathlib import Path
-from toolz import identity, itemmap
+from toolz import identity, keymap, valmap, flip
+
 
 def jsonpath_values(source:dict, path:str):
     parser = parse(path)
@@ -21,7 +22,11 @@ def multi_function_hash_map(source: dict):
     ''' key function is source and value is parser'''
     return [item(key()) for key,item in source.items()]
 
-# {key: functional_value}
-# {f1: f2{
+def key_as_callable(source:dict):
+    return keymap(as_callable, source)
 
+def path_map(path_map: dict, source:dict):
+    return valmap(lambda val: val(source), path_map)
 
+def element(path: str):
+    return partial(flip(jsonpath_values), path)
