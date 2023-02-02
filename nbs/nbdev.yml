@@ -5,5 +5,5 @@ website:
   title: "pypaths"
   site-url: "https://mrfruitcakeforever.github.io/pypaths"
   description: "A functional library for using paths in api contexts"
-  repo-branch: main
+  repo-branch: nbdev
   repo-url: "https://github.com/mrfruitcakeforever/pypaths"
